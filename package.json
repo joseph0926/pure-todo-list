@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "## 개발 환경 구성",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "serve": "webpack serve --open",
     "build": "webpack",
