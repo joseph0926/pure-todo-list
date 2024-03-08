@@ -1,7 +1,7 @@
-import { App } from "@/components/App";
-import { Todo } from "@/types/todo";
+import { App } from '@/components/App';
+import { Todo } from '@/types/todo';
 
-let todos: Todo[] = [{ id: 1, task: "Learn TypeScript", completed: false }];
+let todos: Todo[] = [{ id: 1, task: 'Learn TypeScript', completed: false }];
 
 const onAdd = (task: string) => {
   const newTodo: Todo = { id: Date.now(), task, completed: false };
@@ -15,13 +15,13 @@ const onDelete = (id: number) => {
 };
 
 const render = () => {
-  const root = document.getElementById("root");
-  if (!root) return;
+  const root = document.getElementById('root');
+  if (!root) {return;}
 
-  root.innerHTML = "";
+  root.innerHTML = '';
 
   const appElement = App(todos, onAdd, onDelete);
   root.appendChild(appElement);
 };
 
-document.addEventListener("DOMContentLoaded", render);
+document.addEventListener('DOMContentLoaded', render);
