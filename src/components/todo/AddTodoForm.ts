@@ -12,7 +12,7 @@ export const AddTodoForm = (onAdd: (task: string) => void) => {
 
   form.onsubmit = (e) => {
     e.preventDefault();
-    if (!input.value.trim()) return;
+    if (!input.value.trim()) {return;}
     onAdd(input.value);
     input.value = '';
   };

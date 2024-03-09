@@ -8,7 +8,7 @@ import {
 
 const render = () => {
   const root = document.getElementById('root');
-  if (!root) return;
+  if (!root) {return;}
 
   root.innerHTML = '';
 
