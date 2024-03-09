@@ -5,10 +5,12 @@ import { AddTodoForm } from '@/components/todo/AddTodoForm';
 export const App = (
   todos: Todo[],
   onAdd: (task: string) => void,
-  onDelete: (id: number) => void
+  onDelete: (id: number) => void,
+  toggleComplete: (id: number) => void,
 ) => {
   const app = document.createElement('div');
-  const todoList = TodoList(todos, onDelete);
+  app.classList.add('app');
+  const todoList = TodoList(todos, onDelete, toggleComplete);
   const addTodoForm = AddTodoForm(onAdd);
 
   app.appendChild(addTodoForm);
