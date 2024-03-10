@@ -1,15 +1,10 @@
 <!-- 프로젝트 로고 -->
 <br />
 <div align="center">
-  <a href="https://github.com/joseph0926/GameAuction">
-    <img src="https://github.com/joseph0926/GameAuction/assets/100750188/cd0eb354-ac1c-4a64-b852-05c247a7460e" alt="Logo" width="80" height="80">
-  </a>
-
   <h3 align="center">PureTodoList</h3>
 </div>
 <!-- 프로젝트 소개 -->
-
-![game-auction](https://github.com/joseph0926/GameAuction/assets/100750188/a1db9277-e73f-43d0-bfc1-5ae127b2d653)
+![nhn-injeinc](https://github.com/joseph0926/pure-todo-list/assets/100750188/9e2aeea7-4e5a-428b-b9ee-7e5acd81c957)
 
 ## 프로젝트 소개
 
