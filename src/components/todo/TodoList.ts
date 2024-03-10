@@ -1,4 +1,3 @@
-import { Todo } from '@/types/todo';
 import { TodoItem } from '@/components/todo/TodoItem';
 import { getFilteredTodos } from '@/features/todo';
 

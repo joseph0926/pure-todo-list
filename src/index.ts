@@ -1,13 +1,14 @@
+import { clearCompletedTodos } from './features/todo';
+import { Todo } from './types/todo';
+
 import { App } from '@/components/App';
 import {
   onAdd as onAddTodo,
   onDelete as onDeleteTodo,
   toggleComplete as toggleCompleteTodo,
 } from '@/features/todo';
-import { clearCompletedTodos } from './features/todo';
-import { Todo } from './types/todo';
 
-export let todos: Todo[] = [];
+export const todos: Todo[] = [];
 
 const render = () => {
   const root = document.getElementById('root');
