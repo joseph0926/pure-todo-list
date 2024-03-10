@@ -29,6 +29,8 @@ export const TodoItem = (
   if (todo.completed) {
     item.style.textDecoration = 'line-through';
     item.style.color = '#A9A9A9';
+  } else {
+    item.style.cursor = 'grab';
   }
 
   const deleteButton = document.createElement('button');
@@ -41,6 +43,63 @@ export const TodoItem = (
   item.appendChild(checkbox);
   item.appendChild(label);
   item.appendChild(deleteButton);
+
+  let isDragged = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let dragTimeout: NodeJS.Timeout | null = null;
+
+  item.addEventListener('mousedown', (e) => {
+    if (todo.completed) {return;}
+
+    isDragged = true;
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    item.style.cursor = 'grabbing';
+
+    const mirror = item.cloneNode(true) as HTMLElement;
+    mirror.style.position = 'absolute';
+    mirror.style.opacity = '0.5';
+    mirror.style.pointerEvents = 'none';
+    document.body.appendChild(mirror);
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isDragged) {return;}
+      mirror.style.left = `${e.clientX - dragStartX + item.getBoundingClientRect().left}px`;
+      mirror.style.top = `${e.clientY - dragStartY + item.getBoundingClientRect().top}px`;
+
+      clearTimeout(dragTimeout!);
+      dragTimeout = setTimeout(() => {
+        mirror.style.filter = 'blur(4px)';
+      }, 2000);
+    };
+
+    const onMouseUp = () => {
+      if (mirror.parentNode) {
+        document.body.removeChild(mirror);
+      }
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+      isDragged = false;
+      item.style.cursor = 'grab';
+      clearTimeout(dragTimeout!);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+
+    const onKeyUp = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isDragged) {
+        onMouseUp();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyUp);
+
+    item.addEventListener('mouseup', () => {
+      document.removeEventListener('keydown', onKeyUp);
+    });
+  });
 
   return item;
 };
