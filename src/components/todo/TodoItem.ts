@@ -50,7 +50,7 @@ export const TodoItem = (
   let dragTimeout: NodeJS.Timeout | null = null;
 
   item.addEventListener('mousedown', (e) => {
-    if (todo.completed) return;
+    if (todo.completed) {return;}
 
     isDragged = true;
     dragStartX = e.clientX;
@@ -64,7 +64,7 @@ export const TodoItem = (
     document.body.appendChild(mirror);
 
     const onMouseMove = (e: MouseEvent) => {
-      if (!isDragged) return;
+      if (!isDragged) {return;}
       mirror.style.left = `${e.clientX - dragStartX + item.getBoundingClientRect().left}px`;
       mirror.style.top = `${e.clientY - dragStartY + item.getBoundingClientRect().top}px`;
 
