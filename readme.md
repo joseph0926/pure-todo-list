@@ -4,6 +4,7 @@
   <h3 align="center">PureTodoList</h3>
 </div>
 <!-- 프로젝트 소개 -->
+
 ![nhn-injeinc](https://github.com/joseph0926/pure-todo-list/assets/100750188/9e2aeea7-4e5a-428b-b9ee-7e5acd81c957)
 
 ## 프로젝트 소개
