@@ -24,3 +24,7 @@ jobs:
       - name: Run ESLint checks in packages
         run: |
           npm run lint:check
+
+      - name: Run unit tests
+        run: |
+          npm run test
