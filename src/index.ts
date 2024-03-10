@@ -1,19 +1,30 @@
+import { clearCompletedTodos } from './features/todo';
+import { Todo } from './types/todo';
+
 import { App } from '@/components/App';
 import {
-  getTodos,
   onAdd as onAddTodo,
   onDelete as onDeleteTodo,
   toggleComplete as toggleCompleteTodo,
 } from '@/features/todo';
 
+export const todos: Todo[] = [];
+
 const render = () => {
   const root = document.getElementById('root');
-  if (!root) {return;}
+  if (!root) {
+    return;
+  }
 
   root.innerHTML = '';
 
-  const todos = getTodos();
-  const appElement = App(todos, onAdd, onDelete, toggleComplete);
+  const appElement = App(
+    onAdd,
+    onDelete,
+    toggleComplete,
+    clearAllTodos,
+    filterTodos,
+  );
 
   root.appendChild(appElement);
 };
@@ -30,6 +41,15 @@ const onDelete = (id: number) => {
 
 const toggleComplete = (id: number) => {
   toggleCompleteTodo(id);
+  render();
+};
+
+const clearAllTodos = () => {
+  clearCompletedTodos();
+  render();
+};
+
+const filterTodos = () => {
   render();
 };
 
