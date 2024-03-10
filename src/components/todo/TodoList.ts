@@ -10,7 +10,9 @@ export const TodoList = (
   list.classList.add('todo-list');
 
   const sortedTodos = todos.sort((a, b) => {
-    if (a.completed === b.completed) return a.id - b.id;
+    if (a.completed === b.completed) {
+      return a.id - b.id;
+    }
     return a.completed ? 1 : -1;
   });
   sortedTodos.forEach((todo) => {
