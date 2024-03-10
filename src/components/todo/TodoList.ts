@@ -8,7 +8,14 @@ export const TodoList = (
 ) => {
   const list = document.createElement('ul');
   list.classList.add('todo-list');
-  todos.forEach((todo) => {
+
+  const sortedTodos = todos.sort((a, b) => {
+    if (a.completed === b.completed) {
+      return a.id - b.id;
+    }
+    return a.completed ? 1 : -1;
+  });
+  sortedTodos.forEach((todo) => {
     const todoItem = TodoItem(todo, onDelete, toggleComplete);
     list.appendChild(todoItem);
   });

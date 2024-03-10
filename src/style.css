@@ -213,3 +213,32 @@ button {
     background: rgba(72, 18, 154, 0.616);
   }
 }
+
+.todo-checkbox + .todo-label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 20px;
+}
+
+.todo-checkbox + .todo-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  border: 2px solid var(--border-color);
+  border-radius: 3px;
+}
+
+.todo-checkbox:checked + .todo-label::after {
+  content: '✓';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  font-size: 16px;
+  color: var(--text);
+}
